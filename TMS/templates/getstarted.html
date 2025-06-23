@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TMA - Home</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Company Logo" class="logo" />
+      </a>
+    </div>
+    <div class="navbar-links">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('control_vitals') }}">Control Vital Signs</a>
+      <a href="{{ url_for('display_monitor') }}">Display Monitor</a>
+      <a href="{{ url_for('change_session_id') }}">Change Session ID</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </div>
+    <div class="navbar-time" id="current-time"></div>
+  </nav>
+
+  <div class="rm-wrapper">
+    <div class="rm-containerH">
+      <div class="rm-card">
+        <h1 class="rm-title">About Training Monitor App</h1>
+        <p class="rm-text"> <b>Built for EMS educators. Backed by MedTech. Free forever.</b><br>
+        Every EMS program deserves great tools, not just the well-funded ones.<br>
+        At MedTech, we’ve spent years working directly with EMS educators and students across the country. One thing we’ve heard again and again: “We’d love to use a training monitor in our classroom, but we just can’t afford one.”
+        <br>Real defibrillators and training monitors are incredible, but they’re also expensive. Many programs are running on shoestring budgets, doing everything they can to stretch every dollar. And yet, the pressure to deliver high-quality, hands-on training has never been higher.
+
+      <br>That’s why we created the <b>Training Monitor App.</b>
+     </p>
+      </div>
+    </div>
+
+    <!-- Image -->
+    <img src="{{ url_for('static', filename='images/img.png') }}" alt="Vitals" class="resus-vitals-image">
+  </div>
+
+  <div class="control-vitals-container">
+    <h1 class="control-vitals-title">What do you want to do?</h1>
+    
+    <div class="vital-control-buttons">
+      <a onclick="getstarted()" class="control-button">
+        <h2 class="button-title">Get Started!</h2>
+        <p class="button-description">Craete and Join a Session and Start Monitoring.</p>
+      </a>
+      
+      <a href="{{ url_for('change_session_id') }}" class="control-button">
+        <h2 class="button-title">Join a session</h2>
+        <p class="button-description">Join a session by entering the session ID.</p>
+      </a>
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='javascript/timeonallpages.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TMA - Home</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Company Logo" class="logo" />
+      </a>
+    </div>
+    <div class="navbar-links">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('control_vitals') }}">Control Vital Signs</a>
+      <a href="{{ url_for('display_monitor') }}">Display Monitor</a>
+      <a href="{{ url_for('change_session_id') }}">Change Session ID</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </div>
+    <div class="navbar-time" id="current-time"></div>
+  </nav>
+
+  <div class="rm-wrapper">
+    <div class="rm-containerH">
+      <div class="rm-card">
+        <h1 class="rm-title">About Training Monitor App</h1>
+        <p class="rm-text"> <b>Built for EMS educators. Backed by MedTech. Free forever.</b><br>
+        Every EMS program deserves great tools, not just the well-funded ones.<br>
+        At MedTech, we’ve spent years working directly with EMS educators and students across the country. One thing we’ve heard again and again: “We’d love to use a training monitor in our classroom, but we just can’t afford one.”
+        <br>Real defibrillators and training monitors are incredible, but they’re also expensive. Many programs are running on shoestring budgets, doing everything they can to stretch every dollar. And yet, the pressure to deliver high-quality, hands-on training has never been higher.
+
+      <br>That’s why we created the <b>Training Monitor App.</b>
+     </p>
+      </div>
+    </div>
+
+    <!-- Image -->
+    <img src="{{ url_for('static', filename='images/img.png') }}" alt="Vitals" class="resus-vitals-image">
+  </div>
+
+
+  
+<!-- div 2: Show this IF session ID is NOT created -->
+<div id="div2" class="control-vitals-container" style="display: none;">
+  <h1 class="control-vitals-title">What do you want to do?</h1>
+
+  <div class="vital-control-buttons">
+    <a onclick="getstarted()" class="control-button">
+      <h2 class="button-title">Get Started with a Session</h2>
+      <p class="button-description">Get started with a new session ID and start monitoring</p>
+    </a>
+
+    <a href="{{ url_for('change_session_id') }}" class="control-button">
+      <h2 class="button-title">Join an Existing Session ID</h2>
+      <p class="button-description">Join a session ID by entering the session ID.</p>
+    </a>
+  </div>
+</div>
+
+
+
+  <div class="rm-wrapper">
+  <div class="rm-containerH">
+    <div class="rm-card">
+      <h2 class="rm-title">How to Use the Training Monitor App</h2>
+      <p class="rm-text">Running realistic vitals in the classroom has never been easier. Whether you're using a projector, tablet, or multiple student devices, the Training Monitor App is built to give you full control with fast setup.</p>
+      
+      <h3 class="rm-title" style="font-size: 1.2rem; margin-top: 1.5rem;">Step 1: Launch the Remote Device</h3>
+      <p class="rm-text">Click "Control Vital Signs" to start a new scenario.</p>
+      <p class="rm-text">A unique Session ID will be created automatically.</p>
+      <p class="rm-text">Already have a session running? Click "Change Session ID" to rejoin or control an existing one.</p>
+      
+      <h3 class="rm-title" style="font-size: 1.2rem; margin-top: 1.5rem;">Step 2: Open the Monitor Display</h3>
+      <p class="rm-text">On a separate device (like a screen the students can see), enter the same Session ID to connect the monitor display.</p>
+      <p class="rm-text">No logins, no accounts, no shared network needed — works anywhere with internet.</p>
+      
+      <h3 class="rm-title" style="font-size: 1.2rem; margin-top: 1.5rem;">What the Monitor Displays</h3>
+      <p class="rm-text">The vitals screen includes real-time:</p>
+      <ul style="color: #e0e0e0; padding-left: 1.5rem; margin-bottom: 1rem;">
+        <li>ECG with HR</li>
+        <li>SpO₂</li>
+        <li>Blood Pressure</li>
+        <li>ETCO₂ with RR</li>
+      </ul>
+      
+      <h3 class="rm-title" style="font-size: 1.2rem; margin-top: 1.5rem;">What You Can Control (From the Remote)</h3>
+      <ul style="color: #e0e0e0; padding-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Toggle each vital on or off independently</li>
+        <li>Choose from preset heart rhythms</li>
+        <li>Manually adjust each individual vital sign</li>
+        <li>Use preset shock bundles to simulate a patient worsening or improving</li>
+      </ul>
+      <p class="rm-text">This gives you the power to create dynamic, responsive scenarios that feel realistic without expensive equipment or complicated setup.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- div 1: Show this IF session ID is created -->
+<div id="div1" class="control-vitals-container" style="display: none;">
+  <h1 class="control-vitals-title">What do you want to do?</h1>
+
+  <div class="vital-control-buttons">
+    <a href="{{ url_for('control_vitals') }}" class="control-button">
+      <h2 class="button-title">Control Vital Signs</h2>
+      <p class="button-description">Update vital signs and waveforms</p>
+    </a>
+
+    <a href="{{ url_for('display_monitor') }}" class="control-button">
+      <h2 class="button-title">Display Patient Monitor</h2>
+      <p class="button-description">View monitor with vitals & waveforms</p>
+    </a>
+
+    <a href="{{ url_for('change_session_id') }}" class="control-button">
+      <h2 class="button-title">Change Session ID</h2>
+      <p class="button-description">Start or join a new session</p>
+    </a>
+  </div>
+</div>
+
+  <script src="{{ url_for('static', filename='javascript/timeonallpages.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+</body>
+</html>

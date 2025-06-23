@@ -1,0 +1,153 @@
+/* Root Theme */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+}
+
+/* Container */
+.rm-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 5vh auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    padding: 0 2vw;
+}
+
+/* Cards */
+.rm-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: clamp(1.5em, 2vw, 2.5em);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease;
+}
+
+.rm-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Typography */
+.rm-title {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    color: #4dabf7;
+    margin-bottom: 1em;
+}
+
+.rm-subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: #4dabf7;
+    margin-bottom: 0.8em;
+}
+
+.rm-text {
+    font-size: clamp(1rem, 1.3vw, 1.125rem);
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 1em;
+}
+
+/* Button Group */
+.rm-button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-top: 4vh;
+    margin-bottom: 10vh;
+}
+
+/* Buttons */
+.rm-button {
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.6em 1.5em;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 140px;
+    text-align: center;
+}
+
+/* First Button */
+.rm-feedback-btn {
+    background-color: #2e7d32;
+}
+
+.rm-feedback-btn:hover {
+    background-color: #388e3c;
+}
+
+/* Second Button */
+.rm-openpage-btn {
+    background-color: #7b1fa2;
+}
+
+.rm-openpage-btn:hover {
+    background-color: #9c27b0;
+}
+
+/* ============================= */
+/* MEDIA QUERIES FOR ADAPTATION */
+/* ============================= */
+
+/* Extra Small Devices (Mobile <480px) */
+@media (max-width: 480px) {
+    .rm-container {
+        padding: 0 4vw;
+    }
+
+    .rm-card {
+        padding: 1.2em;
+    }
+
+    .rm-button-group {
+        gap: 1rem;
+        margin-bottom: 6vh;
+    }
+
+    .rm-button {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .rm-title,
+    .rm-subtitle,
+    .rm-text {
+        text-align: center;
+    }
+}
+
+/* Small to Medium Screens (720p - HD) */
+@media (max-width: 1366px) {
+    .rm-card {
+        padding: 2em;
+    }
+
+    .rm-button {
+        min-width: 130px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Large Screens (1080p and above) */
+@media (min-width: 1920px) {
+    .rm-container {
+        max-width: 1600px;
+        padding: 0 5vw;
+    }
+
+    .rm-card {
+        padding: 2.5em 3em;
+    }
+
+    .rm-button {
+        font-size: 1.3rem;
+        padding: 0.8em 2em;
+    }
+}

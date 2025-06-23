@@ -1,0 +1,192 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Dark Theme Base */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+/* Page Title */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+/* Button Wrapper */
+.button-wrapper {
+    margin-bottom: 30px;
+}
+
+.button-wrapper a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.button-wrapper a:hover {
+    background-color: #2a2a2a;
+    transform: scale(1.05);
+}
+
+/* Feedback Container */
+ul {
+    list-style: none;
+}
+
+/* Feedback Item */
+.feedback {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: background-color 0.3s ease;
+}
+
+.feedback:hover {
+    background-color: #222;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border-radius: 50%;
+    background-color: #333;
+    background-image: url('../images/avatar.png');
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+
+
+/* Name */
+.feedback strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #bbbbbb;
+}
+
+/* Title as h1 style */
+.feedback em {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 5px 0;
+    font-style: normal;
+}
+
+/* Description */
+.feedback p {
+    font-size: 1rem;
+    color: #dddddd;
+    line-height: 1.5;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination a, .pagination strong {
+  margin: 0 5px;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #444;
+  border: 1px solid #ddd;
+}
+
+.pagination a:hover {
+  background-color: #eee;
+}
+
+.pagination strong {
+  background-color: #444;
+  color: white;
+  border-color: #444;
+}
+
+.logo {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: 20px auto 10px auto; /* center horizontally */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+
+.status-label {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.status-label.in-development { background-color: #ff6b6b; }
+.status-label.planned { background-color: #f0c93d; }
+.status-label.completed { background-color: #3da6f0; }
+
+
+.filter-container {
+            margin: 20px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .filter-container select, .filter-container button {
+            padding: 8px;
+            margin-right: 10px;
+        }
+        .filter-container button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .filter-container button:hover {
+            background: #45a049;
+        }
+        .status-label.null, .status-label.pending {
+            background-color: #ff9800;
+        }

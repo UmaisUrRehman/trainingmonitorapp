@@ -1,0 +1,521 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*  */
+body {
+  background-color: #121212;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+
+
+/*div for dashboard of the graph display*/
+/*div for dashboard of the graph display*/
+.dashboard {
+  background-color: #1b1b1b;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.vital-box {
+  background-color: none;
+  display: flex;
+  padding: 0px;
+  align-items: stretch;
+}
+
+
+/* Vital Info */
+.vital-info {
+  display: inline-block;
+  margin-right: 12px;
+  border-radius: 12px;
+  flex-direction: column;
+  width: 15%;
+  height: 200px;
+  background-color: #00000079;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+/* Chart wrapper */
+.chart-wrapper {
+  flex: 1;
+  position: relative;
+  margin-right: 5px;
+  font-family:Arial, Helvetica, sans-serif;
+  width: 500px;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* Vital Header */
+.vital-header {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* Vital Value */
+.vital-value {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.vital-labelrr {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.vital-valuerr {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+/* Graph Name */
+.graph-name, 
+.vital-graph-label {
+  font-size: 14px;
+  color: #888;
+  margin-top: auto;
+}
+
+/* Canvas Graph */
+canvas {
+  display: flex;
+  width: 100% !important;
+  height: 200px !important;
+  background-color: #121212;
+  border-radius: 12px;
+}
+
+/* Unique Value Colors */
+.green { color: #3ddc84; }
+.yellow { color: #f0c93d; }
+.red { color: red; }
+.orange { color: whitesmoke; }
+
+/* ETCO2 Specific Styles */
+.vital-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 4px;
+}
+
+.vital-label-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vital-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #aaa;
+  margin-bottom: 2px;
+}
+
+
+
+
+
+/* Sweep Bar - thin line continuously moving */
+/* Sweep Bar - thin line continuously moving */
+.sweep-bar {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 1.25%;
+  height: 100%;
+  background-color: #121212;
+  animation: sweepGap 5s linear infinite;
+  animation-delay: 5s; /* delay sweep animation by 5 seconds */
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Sweep animation */
+@keyframes sweepGap {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Reveal Bar - full canvas-sized bar sliding right-to-left to reveal graph */
+.reveal-bar {
+  position: absolute;
+  top: 0;
+  left: 100%; /* start off to the right */
+  width: 100%; /* full width */
+  height: 100%;
+  background-color: #121212;
+  animation: revealGraph 5s ease-out forwards;
+  animation-delay: 0s; /* start immediately on page load */
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Reveal animation: move left from 100% to 0, sliding reveal-bar leftward */
+@keyframes revealGraph {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 33%; /* space between buttons */
+  margin-bottom: 100px;
+  margin-top: 3%;
+}
+
+.left-button,
+.right-button {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific button colors */
+.left-button {
+  background-color: #388e3c;
+}
+
+.right-button {
+  background-color: #7b1fa2;
+}
+
+/* Hover Effects */
+.left-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+  background-color: #2e7d32;
+}
+
+.right-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+  background-color: #6a1b9a;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1080px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboard {
+    padding: 20px 10px;
+  }
+
+  .vital-box {
+    padding: 15px;
+  }
+
+  .vital-header {
+    font-size: 16px;
+  }
+
+  .vital-value {
+    font-size: 28px;
+  }
+
+  .graph-name {
+    font-size: 12px;
+  }
+
+  canvas {
+    height: 180px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .button-container {
+    padding: 10px;
+  }
+
+  .vital-box {
+    padding: 10px;
+  }
+
+  .vital-header {
+    font-size: 14px;
+  }
+
+  .vital-value {
+    font-size: 24px;
+  }
+
+  .graph-name {
+    font-size: 10px;
+  }
+
+  canvas {
+    height: 150px !important;
+  }
+
+  .chart-time-overlay {
+    font-size: 0.8em;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-button,
+  .right-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .dashboard {
+    padding: 10px;
+  }
+
+  .vital-box {
+    padding: 8px;
+  }
+
+  .vital-header {
+    font-size: 12px;
+  }
+
+  .vital-value {
+    font-size: 20px;
+  }
+
+  .graph-name {
+    font-size: 8px;
+  }
+
+  canvas {
+    height: 120px !important;
+  }
+
+  .chart-time-overlay {
+    font-size: 0.7em;
+    padding: 3px 6px;
+  }
+}
+
+
+
+
+
+
+
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 10, 10, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #121212, #1e1e1e);
+  padding: 24px 32px;
+  border-radius: 16px;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 0 0.1px black;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Heartbeat animation only when hovered */
+.popup-content:hover {
+  animation: heartbeat 0.75s 1;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0.1px black;
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0.2px black;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0.4px black;
+  }
+}
+
+.size-controls {
+  margin: 20px 0;
+}
+
+.size-controls button {
+  font-size: 26px;
+  margin: 0 10px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 10px;
+  background: #00e676;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.size-controls button:hover {
+  transform: scale(1.1);
+  background: #00c853;
+}
+
+.close-popup {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #2c2c2c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.close-popup:hover {
+  background: #444;
+}
+
+/* Hide element */
+.hidden {
+  display: none;
+}
+
+/* Graph Toggle Buttons Styling */
+.toggle-graph-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.toggle-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #388e3c; /* Default green */
+}
+
+.toggle-btn:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* Base styles for all devices */
+.sweep-bar {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 1.25%;
+  height: 100%; /* Will be overridden for mobile */
+  background-color: #121212;
+  animation: sweepGap 5s linear infinite;
+  animation-delay: 5s;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reveal-bar {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%; /* Will be overridden for mobile */
+  background-color: #121212;
+  animation: revealGraph 5s ease-out forwards;
+  animation-delay: 0s;
+  z-index: 3;
+  pointer-events: none;
+}
+
+@keyframes sweepGap {
+  0% { left: -10%; }
+  100% { left: 100%; }
+}
+
+@keyframes revealGraph {
+  from { left: 0%; }
+  to { left: 100%; }
+}
+
+
+@media (min-width: 360px) and (max-width: 720px) {
+  .vital-item {
+    flex: 1 1 45%; /* Two per row */
+  }
+  
+  .chart-wrapper,
+  canvas {
+    height: 160px !important;
+  }
+  
+  .vital-value {
+    font-size: 22px;
+  }
+  
+  .button-container {
+    margin-bottom: 30px;
+  }
+}
+
+
+/* ========== Existing Styles (unchanged) ========== */
+/* ... (rest of your existing CSS styles) ... */
+
+/* Graph Toggle Buttons Styling */
+.toggle-graph-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}

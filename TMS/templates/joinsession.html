@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joining Session</title>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session');
+        
+        if (!sessionId) {
+            alert('No session ID found in URL');
+            window.location.href = "/";
+            return;
+        }
+
+        fetch(`/get_session_data?sessionId=${sessionId}`)
+            .then(response => {
+                if (!response.ok) throw new Error('Network error');
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    localStorage.setItem("session_id", data.session_id);
+                    localStorage.setItem("hrSlider", data.hr || 0);
+                    localStorage.setItem("rrSlider", data.rr || 0);
+                    localStorage.setItem("sbpSlider", data.sbp || 0);
+                    localStorage.setItem("dbpSlider", data.dbp || 0);
+                    localStorage.setItem("spo2Slider", data.spo2 || 0);
+                    localStorage.setItem("etco2Slider", data.etco2 || 0);
+                    window.location.href = "/";
+                } else {
+                    alert('Error: ' + (data.message || 'Session not found'));
+                    window.location.href = "/";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to join session');
+                window.location.href = "/";
+            });
+    });
+    </script>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 50px;">
+        <h2>Joining session, please wait...</h2>
+    </div>
+</body>
+</html>

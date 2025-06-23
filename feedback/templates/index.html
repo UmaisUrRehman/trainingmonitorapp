@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+    <title>Feedbacks</title>
+</head>
+<body>
+    <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Company Logo" class="logo" />
+    </a>
+    <h1>Feedbacks for Training Monitor App</h1>
+    <div class="button-wrapper">
+        <a href="/add">➕ Add Feedback</a>
+    </div>
+
+    <div class="filter-container">
+        <form method="GET" action="{{ url_for('index') }}">
+            <select name="status_filter">
+                <option value="all" {% if request.args.get('status_filter', 'all') == 'all' %}selected{% endif %}>All Statuses</option>
+                <option value="pending" {% if request.args.get('status_filter') == 'pending' %}selected{% endif %}>Pending</option>
+                <option value="planned" {% if request.args.get('status_filter') == 'planned' %}selected{% endif %}>Planned</option>
+                <option value="in-development" {% if request.args.get('status_filter') == 'in-development' %}selected{% endif %}>In Development</option>
+                <option value="completed" {% if request.args.get('status_filter') == 'completed' %}selected{% endif %}>Completed</option>
+            </select>
+            <button type="submit">Filter</button>
+            {% if request.args.get('status_filter') %}
+                <a href="{{ url_for('index') }}" style="margin-left: 10px;">Clear Filter</a>
+            {% endif %}
+        </form>
+    </div>
+
+    <ul>
+        {% for fb in feedbacks %}
+            <li class="feedback">
+                <div class="avatar"></div>
+                <div class="feedback-content">
+                    <div class="status-label {{ fb[5]|lower|replace(' ', '-') }}">{{ fb[5] }}</div> <!-- Status -->
+                    <strong>{{ fb[3] }}</strong> <!-- name -->
+                    <br>
+                    <em>{{ fb[1] }}</em><br> <!-- title -->
+                    <p>{{ fb[2] }}</p> <!-- description -->
+                    <hr>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('index', page=page-1) }}">&laquo; Previous</a>
+        {% endif %}
+
+        {% for p in range(1, total_pages + 1) %}
+            {% if p == page %}
+            <strong>{{ p }}</strong>
+            {% else %}
+            <a href="{{ url_for('index', page=p) }}">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page < total_pages %}
+            <a href="{{ url_for('index', page=page+1) }}">Next &raquo;</a>
+        {% endif %}
+        </div>
+
+
+
+    
+</body>
+</html>

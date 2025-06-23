@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control Vital Signs</title>
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/controlvitals.css') }}"/>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Company Logo" class="logo" />
+      </a>
+    </div>
+    <div class="navbar-links">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('control_vitals') }}">Control Vital Signs</a>
+      <a href="{{ url_for('display_monitor') }}">Display Monitor</a>
+      <a href="{{ url_for('change_session_id') }}">Change Session ID</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </div>
+    <div class="navbar-time" id="current-time"></div>
+  </nav>
+
+  <!-- Settings Panel -->
+  <div class="resus-settings-panel">
+    <h2 class="resus-settings-title">Quick Settings</h2>
+
+    <!-- Heart Rhythm Template Selector -->
+    <div class="resus-template-selector">
+      <label for="rhythmTemplate" class="resus-select-label">Heart Rhythm:</label>
+      <select id="rhythmTemplate" class="resus-template-select" onchange="onRhythmChange()">
+        <optgroup label="Sinus Rhythm">
+          <option value="Sinus">Sinus Rhythm</option>
+        </optgroup>
+        <optgroup label="ACS Bundle Branch block">
+          <option value="WideQRS">Wide QRS LBB or RBBB</option>
+          <option value="STElevation">ST Elevation - Infarction</option>
+          <option value="STDepression">ST Depression-Ischaemia</option>
+        </optgroup>
+        <optgroup label="Arrhythmia">
+          <option value="SVT">SVT - Supraventricular Tachycardia</option>
+          <option value="AFib">Atrial Fibrillation</option>
+          <option value="AFlutter">Atrial Flutter</option>
+          <option value="VTach">VT - Ventricular Tachycardia with Pulse</option>
+        </optgroup>
+        <optgroup label="Heart Block">
+          <option value="FirstDegree">1st Degree Heart Block</option>
+          <option value="Mobitz1">Mobitz Type 1 - Wenckebach</option>
+          <option value="Mobitz2">Mobitz Type 2 - 2:1</option>
+          <option value="CompleteBlock">Complete Heart Block</option>
+        </optgroup>
+        <optgroup label="Pacing">
+          <option value="PaceNoCapture">Pacing Spike - No Electrical Capture</option>
+          <option value="PaceWithCapture">Paced Rhythm with Capture</option>
+        </optgroup>
+        <optgroup label="Cardiac Arrest">
+          <option value="Asystole">Asystole</option>
+          <option value="PEA">PEA - Pulseless Electrical Activity</option>
+          <option value="PVT">PVT - Pulseless Ventricular Tachycardia</option>
+          <option value="VFib">Ventricular Fibrillation</option>
+        </optgroup>
+        <option value="Custom">Custom Settings</option>
+      </select>
+    </div>
+
+    <!-- Current & New Values Table -->
+    <div class="resus-current-values">
+      <h3 class="resus-values-title">Current Values</h3>
+      <table class="resus-values-table">
+        <tr class="resus-table-header">
+          <th>Vitals</th>
+          <th>Current Settings</th>
+          <th>New Settings</th>
+        </tr>
+        <tr><td>Heart Rate:</td><td class="current-hr" id="hr-value">0</td><td class="new-hr">0</td></tr>
+        <tr><td>Respiratory Rate:</td><td class="current-rr" id="rr-value">0</td><td class="new-rr">0</td></tr>
+        <tr><td>SpO2:</td><td class="current-spo2" id="spo2-value">0</td><td class="new-spo2">0</td></tr>
+        <tr><td>Systolic BP:</td><td class="current-sbp" id="sbp-value">0</td><td class="new-sbp">0</td></tr>
+        <tr><td>Diastolic BP:</td><td class="current-dbp" id="dbp-value">0</td><td class="new-dbp">0</td></tr>
+        <tr><td>ETCO2:</td><td class="current-etco2" id="etco2-value">0</td><td class="new-etco2">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Sliders -->
+    <div class="resus-controls">
+      {% set sliders = [
+        ("Heart Rate", "hr", 0, 250, 60),
+        ("Respiratory Rate", "rr", 0, 60, 14),
+        ("SpO2", "spo2", 0, 100, 100),
+        ("Systolic BP", "sbp", 0, 250, 120),
+        ("Diastolic BP", "dbp", 0, 250, 80),
+        ("ETCO2", "etco2", 0, 150, 30)
+      ] %}
+      {% for label, id, min, max, val in sliders %}
+        <div class="resus-slider-control">
+          <label>{{ label }} ({{ min }}-{{ max }}):</label>
+          <input type="range" min="{{ min }}" max="{{ max }}" value="{{ val }}" class="resus-slider" id="{{ id }}Slider">
+          <span class="resus-slider-value">0</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Buttons -->
+    <div class="resus-action-buttons">
+      <button class="resus-apply-btn" id="applyBtn">Apply New Settings</button>
+      <button class="resus-reset-btn" id="resetBtn">Reset to Default</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='javascript/controlvitals.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/timeonallpages.js') }}"></script>
+</body>
+</html>

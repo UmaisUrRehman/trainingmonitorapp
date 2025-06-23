@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <h1>Admin Panel – Manage Feedback</h1>
+    <a href="{{ url_for('index') }}">⬅ Return to User View</a>
+    <ul>
+        {% for fb in feedbacks %}
+            <li class="feedback">
+                <div>
+                    <strong>{{ fb[3] }}</strong> ({{ fb[4] }})<br> <!-- name and email -->
+                    <em>{{ fb[1] }}</em><br> <!-- title -->
+                    <p>{{ fb[2] }}</p> <!-- description -->
+                    <p><strong>Status:</strong> {{ fb[5] }}</p>
+                    <form action="{{ url_for('update_status', feedback_id=fb[0]) }}" method="POST">
+                        <select name="status">
+                            {% if not fb[5] %}
+                                <option value="" selected disabled>-- No Status Assigned --</option>
+                            {% endif %}
+                            <option value="Planned" {% if fb[5]=='Planned' %}selected{% endif %}>Planned</option>
+                            <option value="In Development" {% if fb[5]=='In Development' %}selected{% endif %}>In Development</option>
+                            <option value="Completed" {% if fb[5]=='Completed' %}selected{% endif %}>Completed</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+
+                    <hr>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

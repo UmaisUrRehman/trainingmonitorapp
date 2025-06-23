@@ -1,0 +1,306 @@
+/* Session ID Container */
+.resus-session-id-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    border: 1px solid #333;
+}
+
+.resus-session-id-header {
+    color: #4fc3f7;
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.resus-session-id-control-group {
+    margin-bottom: 1.5rem;
+}
+
+.resus-session-id-subheader {
+    color: #a5d8ff;
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Text Input Styling */
+.resus-session-id-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 1rem;
+    background-color: #2d2d2d;
+    border: 2px solid #3a3a3a;
+    color: #ffffff;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.resus-session-id-input:focus {
+    outline: none;
+    border-color: #4dabf7;
+    box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
+}
+
+/* Button Container */
+.resus-session-id-btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Common Button Styling */
+.resus-session-id-set-btn,
+.resus-session-id-generate-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+/* Individual Button Colors */
+.resus-session-id-set-btn {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.resus-session-id-generate-btn {
+    background-color: #7b1fa2;
+    color: white;
+}
+
+/* Hover Effects */
+.resus-session-id-set-btn:hover {
+    background-color: #256829;
+    transform: translateY(-1px);
+}
+
+.resus-session-id-generate-btn:hover {
+    background-color: #6a1b9a;
+    transform: translateY(-1px);
+}
+
+/* Active Effects */
+.resus-session-id-set-btn:active,
+.resus-session-id-generate-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive stacking on smaller screens */
+@media (max-width: 500px) {
+    .resus-session-id-btn-group {
+        flex-direction: column;
+    }
+}
+
+/* Message Styling */
+.resus-session-id-message {
+    margin: 1rem 0 0 0;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    min-height: 20px;
+}
+
+/* Focus states for accessibility */
+button:focus {
+    outline: 2px solid #4dabf7;
+    outline-offset: 2px;
+}
+
+/* QR Section */
+.resus-session-id-qr-section {
+    display: none; /* Initially hidden */
+    background: #1e1e1e; /* Dark background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow for contrast */
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resus-session-id-current {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f1f1f1; /* Light text for visibility */
+    margin-bottom: 15px;
+}
+
+.resus-session-id-current span {
+    color: #4dabf7; /* Bright blue for session ID */
+}
+
+.resus-session-id-qr-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    background-color: #fff; /* White background to ensure QR contrast */
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.resus-session-id-instructions p {
+    font-size: 14px;
+    color: #cccccc; /* Soft light grey */
+    margin-top: 10px;
+}
+
+/* Section Container */
+.rm-session-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease;
+}
+
+.rm-session-container:hover {
+    transform: translateY(-4px);
+}
+
+/* Title */
+.rm-session-title {
+    font-size: 28px;
+    color: #4fc3f7; /* Light blue accent */
+    margin-bottom: 20px;
+}
+
+/* Paragraph */
+.rm-session-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+/* Responsive Design */
+@media (max-width: 1080px) {
+    .resus-session-id-container {
+        padding: 1.5rem;
+    }
+
+    .resus-session-id-header {
+        font-size: 1.6rem;
+    }
+
+    .resus-session-id-subheader {
+        font-size: 1.1rem;
+    }
+
+    .resus-session-id-input {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+
+    .resus-session-id-btn-group {
+        gap: 10px;
+    }
+
+    .resus-session-id-set-btn,
+    .resus-session-id-generate-btn {
+        font-size: 0.9rem;
+    }
+
+    .resus-session-id-current {
+        font-size: 16px;
+    }
+
+    .resus-session-id-instructions p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 720px) {
+    .resus-session-id-container {
+        padding: 1rem;
+    }
+
+    .resus-session-id-header {
+        font-size: 1.4rem;
+    }
+
+    .resus-session-id-subheader {
+        font-size: 1rem;
+    }
+
+    .resus-session-id-input {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .resus-session-id-btn-group {
+        flex-direction: column;
+    }
+
+    .resus-session-id-set-btn,
+    .resus-session-id-generate-btn {
+        font-size: 0.85rem;
+    }
+
+    .resus-session-id-current {
+        font-size: 14px;
+    }
+
+    .resus-session-id-instructions p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resus-session-id-container {
+        padding: 0.8rem;
+    }
+
+    .resus-session-id-header {
+        font-size: 1.2rem;
+    }
+
+    .resus-session-id-subheader {
+        font-size: 0.9rem;
+    }
+
+    .resus-session-id-input {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+
+    .resus-session-id-btn-group {
+        flex-direction: column;
+    }
+
+    .resus-session-id-set-btn,
+    .resus-session-id-generate-btn {
+        font-size: 0.8rem;
+    }
+
+    .resus-session-id-current {
+        font-size: 12px;
+    }
+
+    .resus-session-id-instructions p {
+        font-size: 10px;
+    }
+}

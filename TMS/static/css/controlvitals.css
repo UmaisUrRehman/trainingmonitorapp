@@ -1,0 +1,277 @@
+/* Control vitals style */
+.resus-settings-panel {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 275px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.resus-settings-title {
+    color: #4dabf7;
+    margin-top: 0;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.resus-template-selector {
+    margin-bottom: 20px;
+}
+
+.resus-select-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #a5d8ff;
+}
+
+.resus-template-select {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+.resus-current-values {
+    margin: 20px 0;
+    background-color: #252525;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.resus-values-title {
+    color: #a5d8ff;
+    margin-top: 0;
+}
+
+.resus-values-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.resus-table-header th {
+    text-align: left;
+    color: #4dabf7;
+    font-weight: bold;
+    font-size: 1.1em; /* Slightly larger than normal text */
+}
+
+.resus-values-table td:nth-child(2) {
+    color: #ff8787; /* Current values color */
+    text-align: right;
+    padding-right: 20px;
+}
+
+.resus-values-table td:nth-child(3) {
+    color: #40c057; /* New values color */
+    text-align: right;
+}
+
+.resus-controls {
+    margin: 25px 0;
+}
+
+.resus-slider-control {
+    margin-bottom: 15px;
+}
+
+.resus-slider-control label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ced4da;
+}
+
+.resus-slider {
+    width: 100%;
+    height: 8px;
+    background: #333;
+    outline: none;
+    border-radius: 4px;
+}
+
+.resus-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #4dabf7;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.resus-slider-value {
+    display: inline-block;
+    width: 40px;
+    text-align: right;
+    margin-left: 10px;
+    color: #4dabf7;
+}
+
+.resus-action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.resus-apply-btn,
+.resus-reset-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.3s;
+}
+
+.resus-apply-btn {
+    background-color: #2b8a3e;
+    color: white;
+}
+
+.resus-apply-btn:hover {
+    background-color: #237032;
+}
+
+.resus-reset-btn {
+    background-color: #e03131;
+    color: white;
+}
+
+.resus-reset-btn:hover {
+    background-color: #c92a2a;
+}
+
+/* Responsive Design */
+@media (max-width: 1080px) {
+    .resus-settings-panel {
+        padding: 15px;
+    }
+
+    .resus-settings-title {
+        font-size: 1.5em;
+    }
+
+    .resus-template-select {
+        padding: 8px;
+    }
+
+    .resus-current-values {
+        padding: 12px;
+    }
+
+    .resus-values-title {
+        font-size: 1.1em;
+    }
+
+    .resus-table-header th {
+        font-size: 1em;
+    }
+
+    .resus-slider {
+        height: 6px;
+    }
+
+    .resus-slider-value {
+        width: 35px;
+    }
+
+    .resus-action-buttons {
+        flex-direction: column;
+    }
+
+    .resus-apply-btn,
+    .resus-reset-btn {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 720px) {
+    .resus-settings-panel {
+        padding: 10px;
+    }
+
+    .resus-settings-title {
+        font-size: 1.3em;
+    }
+
+    .resus-template-select {
+        padding: 6px;
+    }
+
+    .resus-current-values {
+        padding: 10px;
+    }
+
+    .resus-values-title {
+        font-size: 1em;
+    }
+
+    .resus-table-header th {
+        font-size: 0.9em;
+    }
+
+    .resus-slider {
+        height: 5px;
+    }
+
+    .resus-slider-value {
+        width: 30px;
+    }
+
+    .resus-action-buttons {
+        flex-direction: column;
+    }
+
+    .resus-apply-btn,
+    .resus-reset-btn {
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resus-settings-panel {
+        padding: 8px;
+    }
+
+    .resus-settings-title {
+        font-size: 1.2em;
+    }
+
+    .resus-template-select {
+        padding: 5px;
+    }
+
+    .resus-current-values {
+        padding: 8px;
+    }
+
+    .resus-values-title {
+        font-size: 0.9em;
+    }
+
+    .resus-table-header th {
+        font-size: 0.8em;
+    }
+
+    .resus-slider {
+        height: 4px;
+    }
+
+    .resus-slider-value {
+        width: 25px;
+    }
+
+    .resus-action-buttons {
+        flex-direction: column;
+    }
+
+    .resus-apply-btn,
+    .resus-reset-btn {
+        margin-bottom: 5px;
+    }
+}

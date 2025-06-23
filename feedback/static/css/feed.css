@@ -1,0 +1,132 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Dark Background Theme */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+/* Page Title */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    animation: fadeIn 0.6s ease-in;
+}
+
+/* Form Styling */
+form {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 0 10px #00000040;
+    animation: fadeInUp 0.6s ease-in;
+}
+
+/* Labels */
+label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #dddddd;
+}
+
+/* Inputs & Textarea */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    background-color: #333333;
+    outline: none;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    background-color: #1f1f1f;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #2a2a2a;
+    transform: scale(1.03);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.logo {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: 20px auto 10px auto; /* center horizontally */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.button-wrapper {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.return-button {
+    background-color: #444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+}
+
+.return-button:hover {
+    background-color: #666;
+}
